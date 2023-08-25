@@ -1,5 +1,5 @@
 [package]
-name = "student_Registration"
+name = "student_registration"
 version = "0.1.0"
 edition = "2021"
 
