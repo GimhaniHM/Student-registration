@@ -16,7 +16,7 @@ fn main() {
         println!();
 
         print!("Select an option: "); 
-        io::stdout().flush().unwrap();
+        //io::stdout().flush().unwrap();
 
         let mut str = String::new();
 
