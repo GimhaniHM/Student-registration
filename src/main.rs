@@ -11,12 +11,13 @@ fn main() {
         println!("--- Sudent Register ---");
         println!("1. Add Student");
         println!("2. View Student");
-        println!("3. Exit");
+        println!("3. Delete Student");
+        println!("4. Exit");
 
         println!();
 
         print!("Select an option: "); 
-        //io::stdout().flush().unwrap();
+        io::stdout().flush().unwrap();
 
         let mut str = String::new();
 
@@ -43,6 +44,18 @@ fn main() {
                 view_students(&vect);
             },
             3 => {
+                let mut search = String::new();
+
+                //ask user to enter name
+                print!("Enter student to be deteted: ");
+                io::stdout().flush().unwrap();
+
+                io::stdin().read_line(&mut search).expect("Cannot read line");
+                println!();
+
+                delete_student(search,&mut vect);
+            },
+            4 => {
                 op = 0;
             }
             _ => println!(),
@@ -79,4 +92,34 @@ fn view_students(input_vec: &Vec<String>){
     println!();
     println!();
 
+}
+
+//function to delete the student
+fn delete_student(name: String,input_vec: &mut Vec<String>){
+
+    let mut found = false;
+    let mut i:usize = 0;
+
+    for (index, value) in input_vec.iter().enumerate() {
+        if *value == name {
+            found = true;
+            break;
+        }
+
+        i = index;
+    }
+
+    if !found {
+        println!("Not found");
+    } else{
+        input_vec.remove(i);
+    }
+
+    //input_vec.remove(input_vec.iter().position(|x| *x == name).expect("Not found"));
+
+
+    // let index = input_vec.iter().position(|r| *r == name).expect("Not found");
+    // input_vec.remove(index);
+
+    
 }
